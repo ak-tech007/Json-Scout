@@ -1,10 +1,7 @@
 'use client'
 import axios, { AxiosResponse } from "axios";
 import FormData from 'form-data';
-<<<<<<< HEAD
 import { access } from "fs";
-=======
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
 
 type ReturnType = {
     [key: string]: any;
@@ -234,7 +231,6 @@ export const reset = async (token:string): Promise<string> => {
 }
 
 // Create a new API endpoint to submit a contact form
-<<<<<<< HEAD
 export const submitContactForm = async (email: string, contactType: string, message: string, recaptcha: string, accessToken: string): Promise<string> => {
         
     const FormData = require('form-data');
@@ -262,23 +258,6 @@ export const submitContactForm = async (email: string, contactType: string, mess
     return error
     });
 
-=======
-export const submitContactForm = async (email: string, contactType: string, message: string, recaptcha: string, accessToken: string): Promise<ReturnType> => {
-    try {
-        const res = await axios.post('https://api.jsonscout.com/contact', {
-            email,
-            contactType,
-            message,
-            recaptcha
-        }, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Bearer ${accessToken}`
-            }
-        });
-        return res.data;
-    } catch (e) {
-        return null;
-    }
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
 }
+
+// this is git test
