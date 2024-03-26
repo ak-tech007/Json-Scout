@@ -1,20 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-<<<<<<< HEAD
-=======
-import { GoogleReCaptcha, GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
 import { Roboto } from "next/font/google"
 import { getCookie } from "cookies-next"
 import { CircularProgress } from "@mui/material"
 import { submitContactForm } from "@/app/backendApis"
-<<<<<<< HEAD
 import { useRef } from 'react';
 import Script from 'next/script';
 import { access } from 'fs';
-=======
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
 
 const roboto = Roboto({
   weight: '400',
@@ -25,7 +18,6 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [contactType, setContactType] = useState('');
   const [message, setMessage] = useState('');
-<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const [subState, setSubState] = useState("");
 
@@ -58,50 +50,10 @@ const ContactForm = () => {
         });
     });
 
-
-    
   };
 
   return (<>
     <Script src={`https://www.google.com/recaptcha/api.js?render=6Lev8MUoAAAAAKp3bYSwQo3lTykrWGHEzGAP1qqd`}></Script>
-=======
-  const [recaptchaValue, setRecaptchaValue] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleVerify = (token) => {
-    setRecaptchaValue(token);
-  };
-
-  const submitForm = async () => {
-    setLoading(true);
-
-    let accessToken;
-
-    if(getCookie("access_token")) {
-      accessToken = getCookie("access_token")
-    }
-    else {
-      accessToken = ""
-    }
-    
-    const recaptchaToken = recaptchaValue;
-    
-    const data = await submitContactForm(email, contactType, message, recaptchaToken, accessToken);
-    
-    if (data) {
-      console.log(data);
-      // Handle successful submission
-    } else {
-      console.error('Form submission failed');
-      // Handle failed submission
-    }
-    
-    setLoading(false);
-  };
-
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey="[6Lev8MUoAAAAAKp3bYSwQo3lTykrWGHEzGAP1qqd]">
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
     <div className={`${roboto.className} sm:mb-[10rem] px-[14rem] mb-[18rem] mt-[5%]`}>
       <div className="sm:mx-[27rem] login px-[10rem]  pt-[10rem] pb-[10rem] rounded-[2rem]">
         <div className="sm:text-[3rem] sm:leading-[6rem] sm:mb-[3rem] text-[10rem] leading-[20rem] text-center mb-[10rem] font-semibold">Contact Us</div>
@@ -114,39 +66,21 @@ const ContactForm = () => {
         <div className="sm:mb-[3rem] mb-[8rem]">
           <p className="sm:text-[2rem] sm:mb-[2rem] font-semibold text-[6rem] mb-[4rem]">Contact Type</p>
           <div className="sm:px-[2rem] sm:py-[1.5rem] sm:rounded-[1rem] sm:gap-[3rem] items-center flex px-[7rem] py-[4rem] gap-[7rem] border-[1px] border-[#F2F3F5] rounded-[4rem]">
-<<<<<<< HEAD
             <select onChange={(e) => setContactType(e.target.value)} className="sm:text-[2.3rem] sm:leading-[4rem] text-[6.5rem] leading-[10rem] focus:outline-none w-[100%]">
               <option value="">Select...</option>
               <option value="General">General</option>
               <option value="Support">Support</option>
               <option value="Sales">Sales</option>
-=======
-            <select onChange={(e) => setContactType(e.target.value)} className="sm:text-[2.3rem] sm:leading-[4rem] text-[6.5rem] leading-[10rem] focus:outline-none w-[80%]">
-              <option value="">Select...</option>
-              <option value="type1">General</option>
-              <option value="type2">Support</option>
-              <option value="type3">Sales</option>
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
             </select>
           </div>
         </div>
         <div className="sm:mb-[3rem] mb-[8rem]">
           <p className="sm:text-[2rem] sm:mb-[2rem] font-semibold text-[6rem] mb-[4rem]">Message</p>
           <div className="sm:px-[2rem] sm:py-[1.5rem] sm:rounded-[1rem] sm:gap-[3rem] items-center flex px-[7rem] py-[4rem] gap-[7rem] border-[1px] border-[#F2F3F5] rounded-[4rem]">
-<<<<<<< HEAD
             <textarea onChange={(e) => setMessage(e.target.value)} className="sm:text-[2.3rem] sm:leading-[4rem] text-[6.5rem] leading-[10rem] focus:outline-none w-[100%]" placeholder="Enter your message"></textarea>
           </div>
         </div>
 
-=======
-            <textarea onChange={(e) => setMessage(e.target.value)} className="sm:text-[2.3rem] sm:leading-[4rem] text-[6.5rem] leading-[10rem] focus:outline-none w-[80%]" placeholder="Enter your message"></textarea>
-          </div>
-        </div>
-          <GoogleReCaptcha
-            action='submit'
-            onVerify={handleVerify}
-          />
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
         <button onClick={submitForm} className={`flex justify-center sm:gap-[4rem] gap-[8rem] items-center sm:text-[2.7rem] sm:px-[2rem] sm:py-[1rem] sm:leading-[6rem] sm:rounded-[1rem] text-[9rem] w-full leading-[11rem] py-[5rem] rounded-[3rem] primary-btn`}>
           {loading && (
             <CircularProgress sx={{
@@ -156,7 +90,6 @@ const ContactForm = () => {
             size={24}
             thickness={4} />
         )}Submit</button>
-<<<<<<< HEAD
         {subState && (
           <div className='flex justify-center'>
           <span className='sm:text-[#449D5D] sm:text-[2.3rem] sm:py-[0.8rem] sm:px-[1.5rem] shadow-effect sm:mt-[3rem] rounded-[1rem]'>{subState}</span>
@@ -165,11 +98,6 @@ const ContactForm = () => {
       </div>
     </div>
     </>
-=======
-      </div>
-    </div>
-    </GoogleReCaptchaProvider>
->>>>>>> f9f5b77da6afecdb575a864159cd3e1cba5f9f85
   );
 };
 
